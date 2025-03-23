@@ -3,23 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gestión de Multimedia</title>
+        <title>MultimediaWeb</title>
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+            
             body {
-                font-family: Arial, sans-serif;
+                font-family: 'Orbitron', sans-serif;
                 margin: 0;
                 padding: 0;
-                background-color: #f4f4f9;
-                color: #333;
+                background: #0a0a0a;
+                color: #0ff;
+                text-align: center;
             }
             header {
-                background-color: #4CAF50;
+                background: linear-gradient(90deg, #00f, #0ff);
                 color: white;
                 padding: 20px;
-                text-align: center;
+                box-shadow: 0px 0px 15px #0ff;
             }
             header h1 {
                 margin: 0;
+                text-shadow: 0px 0px 10px #fff;
             }
             nav ul {
                 list-style: none;
@@ -29,46 +33,52 @@
                 margin-top: 10px;
             }
             nav ul li {
-                margin: 0 15px;
+                margin: 0 20px;
             }
             nav ul li a {
-                color: white;
+                color: #fff;
                 text-decoration: none;
                 font-size: 18px;
+                transition: 0.3s;
+                padding: 10px 15px;
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 0px 0px 8px #0ff;
             }
             nav ul li a:hover {
-                text-decoration: underline;
+                background: #0ff;
+                color: #000;
+                box-shadow: 0px 0px 15px #0ff;
             }
             section {
                 max-width: 800px;
-                margin: 30px auto;
-                background-color: white;
+                margin: 40px auto;
+                background: rgba(255, 255, 255, 0.1);
                 padding: 20px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                border-radius: 8px;
+                box-shadow: 0px 0px 15px #0ff;
+                border-radius: 10px;
             }
             section h2 {
-                color: #333;
-                text-align: center;
+                color: #0ff;
+                text-shadow: 0px 0px 10px #0ff;
             }
             section p {
-                color: #555;
+                color: #ddd;
                 line-height: 1.6;
-                text-align: center;
             }
             footer {
                 text-align: center;
                 padding: 20px;
-                background-color: #4CAF50;
+                background: linear-gradient(90deg, #0ff, #00f);
                 color: white;
                 margin-top: 40px;
+                box-shadow: 0px 0px 15px #0ff;
             }
         </style>
     </head>
     <body>
-
         <header>
-            <h1>Gestión de Contenido Multimedia</h1>
+            <h1> Gestión de Contenido Multimedia </h1>
             <nav>
                 <ul>
                     <li><a href="agregarMultimedia.jsp">Agregar Multimedia</a></li>
@@ -78,11 +88,12 @@
         </header>
 
         <section>
-            <h2>Bienvenido a tu caja de Multimedia.</h2>
+            <h2> Bienvenido a tu caja de Multimedia </h2>
             <p>Aquí puedes agregar, visualizar y gestionar imágenes, videos y audios.</p>
         </section>
 
-
-
+        <footer>
+            Prueba Corta 1
+        </footer>
     </body>
 </html>

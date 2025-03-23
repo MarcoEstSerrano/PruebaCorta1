@@ -6,64 +6,78 @@
     <title>Agregar Multimedia</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #00eaff;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
         h2 {
-            text-align: center;
-            color: #333;
+            font-size: 26px;
+            text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
             padding: 20px;
-            background-color: #4CAF50;
-            color: white;
-            margin: 0;
         }
         form {
             max-width: 600px;
             margin: 30px auto;
-            background-color: white;
+            background: rgba(0, 0, 0, 0.8);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00eaff;
+            text-align: left;
         }
         label {
             font-size: 16px;
-            color: #333;
+            color: #00eaff;
             margin-bottom: 8px;
             display: block;
+            text-shadow: 0 0 5px #00eaff;
         }
         input[type="text"], textarea, select {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0 20px 0;
+            padding: 12px;
+            margin: 10px 0;
             border-radius: 4px;
-            border: 1px solid #ddd;
-            font-size: 14px;
+            border: none;
+            background-color: #131313;
+            color: #00eaff;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 0 10px #00eaff;
         }
         textarea {
             height: 120px;
             resize: vertical;
         }
         button {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            padding: 10px 20px;
+            width: 100%;
+            background-color: #00eaff;
+            color: #0a0a0a;
+            font-size: 18px;
+            padding: 12px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: 0.3s ease;
+            text-shadow: 0 0 5px #0a0a0a;
+            box-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #00b3cc;
+            box-shadow: 0 0 20px #00b3cc, 0 0 30px #00b3cc;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #4CAF50;
-            color: white;
-            margin-top: 40px;
+        a {
+            color: #00eaff;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 20px;
+            text-shadow: 0 0 10px #00eaff;
+        }
+        a:hover {
+            color: #00b3cc;
+            text-shadow: 0 0 15px #00b3cc;
         }
     </style>
 </head>
@@ -73,24 +87,25 @@
 
     <form action="guardarMultimedia.jsp" method="post">
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required><br>
+        <input type="text" id="titulo" name="titulo" required>
 
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion"></textarea><br>
+        <textarea id="descripcion" name="descripcion"></textarea>
 
         <label for="url">URL:</label>
-        <input type="text" id="url" name="url" required><br>
+        <input type="text" id="url" name="url" required>
 
         <label for="tipo">Tipo de archivo:</label>
         <select name="tipo" id="tipo" required>
             <option value="Imagen">Imagen</option>
             <option value="Video">Video</option>
             <option value="Audio">Audio</option>
-        </select><br>
+        </select>
 
         <button type="submit">Guardar</button>
-        
-        
     </form>
 
-    <li><a href="index.html">Volver</a></li>
+    <a href="index.html">Volver</a>
+
+</body>
+</html>

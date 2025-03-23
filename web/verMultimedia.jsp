@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -6,41 +7,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ver Multimedia</title>
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+            
             body {
-                font-family: Arial, sans-serif;
+                font-family: 'Orbitron', sans-serif;
                 margin: 0;
                 padding: 0;
-                background-color: #f4f4f9;
-                color: #333;
+                background: #0a0a0a;
+                color: #0ff;
+                text-align: center;
             }
             h2 {
                 text-align: center;
-                color: #333;
+                color: #0ff;
                 padding: 20px;
-                background-color: #4CAF50;
-                color: white;
-                margin: 0;
+                background: linear-gradient(90deg, #00f, #0ff);
+                box-shadow: 0px 0px 15px #0ff;
             }
             table {
                 width: 80%;
                 margin: 20px auto;
                 border-collapse: collapse;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                background-color: #fff;
+                box-shadow: 0px 0px 15px #0ff;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
             }
             th, td {
                 padding: 12px 15px;
                 text-align: left;
+                color: #0ff;
             }
             th {
-                background-color: #4CAF50;
+                background: linear-gradient(90deg, #00f, #0ff);
                 color: white;
+                text-shadow: 0px 0px 10px #fff;
             }
             tr:nth-child(even) {
-                background-color: #f9f9f9;
+                background: rgba(255, 255, 255, 0.05);
             }
             tr:hover {
-                background-color: #f1f1f1;
+                background: rgba(0, 255, 255, 0.2);
             }
             img, video, audio {
                 max-width: 100px;
@@ -51,46 +57,69 @@
                 justify-content: center;
                 align-items: center;
             }
+            a {
+                color: #0ff;
+                text-decoration: none;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+            a:hover {
+                color: #ff0;
+                text-shadow: 0px 0px 10px #ff0;
+            }
+
+            /* Estilo para el botón de eliminar */
+            a.eliminar-btn {
+                color: #ff0;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 10px 20px;
+                border-radius: 8px;
+                background: rgba(255, 0, 0, 0.2);
+                box-shadow: 0px 0px 8px #ff0;
+                transition: 0.3s;
+            }
+
+            a.eliminar-btn:hover {
+                background: #ff0;
+                color: #000;
+                box-shadow: 0px 0px 15px #ff0;
+            }
         </style>
     </head>
     <body>
-
-        <h2>Contenido Multimedia Registrado</h2>
-
+        <h2>📡 Contenido Multimedia Registrado 📡</h2>
         <table border="1">
             <tr>
-                <th>T�tulo</th>
-                <th>Descripci�n</th>
+                <th>Título</th>
+                <th>Descripción</th>
                 <th>Tipo</th>
                 <th>Contenido</th>
-                <th>Acci�n</th> <!-- Nueva columna para eliminar -->
+                <th>Acción</th>
             </tr>
             <%
                 Connection conn = null;
                 Statement stmt = null;
                 ResultSet rs = null;
-
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/media_db", "root", "Admin$1234");
                     stmt = conn.createStatement();
                     String query = "SELECT * FROM multimedia";
                     rs = stmt.executeQuery(query);
-
                     while (rs.next()) {
-                        String id = rs.getString("id"); // ID de la BD
+                        String id = rs.getString("id");
                         String titulo = rs.getString("titulo");
                         String descripcion = rs.getString("descripcion");
                         String tipo = rs.getString("tipo");
                         String url = rs.getString("url");
-
                         out.println("<tr>");
                         out.println("<td>" + titulo + "</td>");
                         out.println("<td>" + descripcion + "</td>");
                         out.println("<td>" + tipo + "</td>");
                         out.print("<td>");
                         out.println("<div class='media-container'>");
-
                         if (tipo.equals("Imagen")) {
                             out.println("<img src='" + url + "' alt='" + titulo + "'>");
                         } else if (tipo.equals("Video")) {
@@ -104,38 +133,24 @@
                             out.println("Tu navegador no soporta el elemento de audio.");
                             out.println("</audio>");
                         }
-
                         out.println("</div>");
                         out.println("</td>");
-
-                        // Bot�n de eliminar
-                        out.println("<td><a href='eliminarMultimedia.jsp?id=" + id + "' onclick=\"return confirm('�Est�s seguro de eliminar este archivo?');\">Eliminar</a></td>");
-
+                        out.println("<td><a href='eliminarMultimedia.jsp?id=" + id + "' class='eliminar-btn' onclick=\"return confirm('¿Estás seguro de eliminar este archivo?');\">Eliminar</a></td>");
                         out.println("</tr>");
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     try {
-                        if (rs != null) {
-                            rs.close();
-                        }
-                        if (stmt != null) {
-                            stmt.close();
-                        }
-                        if (conn != null) {
-                            conn.close();
-                        }
+                        if (rs != null) rs.close();
+                        if (stmt != null) stmt.close();
+                        if (conn != null) conn.close();
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
                 }
             %>
         </table>
-        
-        
-    <li><a href="index.html">Volver</a></li>
-
+        <li><a href="index.html">Volver</a></li>
     </body>
 </html>
