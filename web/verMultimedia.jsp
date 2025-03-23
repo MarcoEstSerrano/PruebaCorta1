@@ -89,7 +89,7 @@
         </style>
     </head>
     <body>
-        <h2>📡 Contenido Multimedia Registrado 📡</h2>
+        <h2>Contenido Multimedia Registrado</h2>
         <table border="1">
             <tr>
                 <th>Título</th>
